@@ -1,13 +1,87 @@
 <template>
-    <lightning-record-view-form record-id={recordId} object-api-name={accountObject}>
-        <div class="slds-grid">
-            <div class="slds-col slds-size_1-of-2">
-                <!-- Other record data here -->
-            </div>
-            <div class="slds-col slds-size_1-of-2">
-                <lightning-formatted-text value={nameValue} class="slds-text-heading_large">
-                </lightning-formatted-text>
-            </div>
+    <!-- <lightning-card title="All Accounts" icon-name="custom:custom63">
+        <div class="slds-m-around_medium">
+            <template if:true={accounts.data}>
+                <template for:each={accounts.data} for:item="acc">
+                    <p key={acc.Id}>{acc.Name}</p>
+                </template>
+            </template>
         </div>
-    </lightning-record-view-form>
+
+    </lightning-card> -->
+    <template if:true={accounts.data}>
+        <template for:each={accounts.data} for:item="acc">
+
+        </template>
+    </template>
+    <table aria-multiselectable="true"
+        class="slds-table slds-table_bordered slds-table_edit slds-table_fixed-layout slds-table_resizable-cols slds-tree slds-table_tree"
+        role="treegrid">
+        <thead>
+            <tr class="slds-line-height_reset">
+                <th class="slds-text-align_right" scope="col" style="width:3.25rem">
+                </th>
+                <th aria-label="Account Name" aria-sort="none"
+                    class="slds-has-button-menu slds-is-resizable slds-is-sortable" scope="col">
+                    <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                        <span class="slds-truncate" title="Account Name">Account Name</span>
+                    </div>
+                </th>
+                <th aria-label="Employees" aria-sort="none"
+                    class="slds-has-button-menu slds-is-resizable slds-is-sortable" scope="col">
+                    <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button"
+                        tabindex="-1">
+                        <span class="slds-assistive-text">Sort by: </span>
+                        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                            <span class="slds-truncate" title="Employees">Employees</span>
+                        </div>
+                    </a>
+                </th>
+                <th aria-label="Phone Number" aria-sort="none"
+                    class="slds-has-button-menu slds-is-resizable slds-is-sortable" scope="col">
+                    <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                        <span class="slds-truncate" title="Phone Number">Phone Number</span>
+                    </div>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <template if:true={accounts.data}>
+                <template for:each={accounts.data} for:item="acc">
+                    <tr key={acc.Id}>
+                        <td class="slds-text-align_right" role="gridcell" style="width:3.25rem">
+                            <div class="slds-checkbox">
+                                <label class="slds-checkbox__label" for="checkbox-0168">
+                                    <span class="slds-checkbox_faux"></span>
+                                    <span class="slds-form-element__label slds-assistive-text">Select item 168</span>
+                                </label>
+                            </div>
+                        </td>
+                        <th class="slds-tree__item slds-is-hovered" data-label="Account Name" scope="row">
+                            <div class="slds-truncate" title="Rewis Inc">
+                                <p>{acc.Name}</p>
+                            </div>
+                        </th>
+                        <td data-label="Employees" role="gridcell">
+                            <div class="slds-truncate" title="3,100">{acc.NumberOfEmployees}</div>
+                        </td>
+                        <td data-label="Phone Number" role="gridcell">
+                            <div class="slds-truncate" title="837-555-1212">{acc.Phone}</div>
+                        </td>
+                        <!-- <td data-label="Account Owner" role="gridcell">
+                            <div class="slds-truncate">
+                                {acc.TotalRevenue}
+                            </div>
+                        </td>
+                        <td data-label="Billing City" role="gridcell">
+                            <div class="slds-truncate" title="Phoenix, AZ">{acc.BillingAddress.BillingStreet}</div>
+                        </td> -->
+
+                    </tr>
+                </template>
+            </template>
+
+        </tbody>
+    </table>
 </template>

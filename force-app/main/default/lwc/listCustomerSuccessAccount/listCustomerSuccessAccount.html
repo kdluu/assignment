@@ -1,0 +1,47 @@
+<template>
+    <table aria-multiselectable="true"
+        class="slds-table slds-table_bordered slds-table_edit slds-table_fixed-layout slds-table_resizable-cols slds-tree slds-table_tree"
+        role="treegrid">
+        <thead>
+            <tr class="slds-line-height_reset">
+                <th class="slds-text-align_right" scope="col" style="width:3.25rem">
+                </th>
+                <th aria-label="Account Name" aria-sort="none"
+                    class="slds-has-button-menu slds-is-resizable slds-is-sortable" scope="col">
+                    <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                        <span class="slds-truncate" title="Account Name">Last Name</span>
+                    </div>
+                </th>
+                <th aria-label="Employees" aria-sort="none"
+                    class="slds-has-button-menu slds-is-resizable slds-is-sortable" scope="col">
+                    <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button"
+                        tabindex="-1">
+                        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                            <span class="slds-truncate" title="Employees">Title</span>
+                        </div>
+                    </a>
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <template if:true={contacts.data}>
+                <template for:each={contacts.data} for:item="contact">
+                    <tr key={contact.Id}>
+                        <td class="slds-text-align_right" role="gridcell" style="width:3.25rem">
+                        </td>
+                        <th class="slds-tree__item slds-is-hovered" data-label="Account Name" scope="row">
+                            <div class="slds-truncate" title="Rewis Inc">
+                                <p>{contact.LastName}</p>
+                            </div>
+                        </th>
+                        <td data-label="Employees" role="gridcell">
+                            <div class="slds-truncate" title="3,100">{contact.Title}</div>
+                        </td>
+                    </tr>
+                </template>
+            </template>
+
+        </tbody>
+    </table>
+</template>

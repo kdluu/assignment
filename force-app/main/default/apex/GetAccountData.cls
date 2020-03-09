@@ -3,5 +3,6 @@ public with sharing class GetAccountData {
     public static List<Account> getAccountList(){
         return [SELECT Name, NumberofEmployees, Phone FROM Account];
     }
+  
    
 }
